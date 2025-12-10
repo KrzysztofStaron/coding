@@ -20,6 +20,12 @@ if not os.path.exists(MODEL_PATH):
 
 print(f"Uploading model from {MODEL_PATH} to Hugging Face Hub: {HF_REPO_ID}")
 api = HfApi(token=HF_TOKEN)
+# Create repository if it doesn't exist
+try:
+    api.create_repo(repo_id=HF_REPO_ID, repo_type="model", exist_ok=True)
+    print(f"Repository '{HF_REPO_ID}' is ready for upload.")
+except Exception as e:
+    print(f"Note: Repository creation check: {e}")
 api.upload_folder(
     folder_path=MODEL_PATH,
     repo_id=HF_REPO_ID,
