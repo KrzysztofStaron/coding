@@ -6,7 +6,7 @@ from unsloth import FastLanguageModel
 import torch
 from human_eval.data import write_jsonl, read_problems
 
-MODEL_PATH = "./qwen2.5-0.5b-coding-h200-final"
+MODEL_PATH = "../../qwen2.5-0.5b-coding-h200-final"
 
 # Load your fine-tuned model
 model, tokenizer = FastLanguageModel.from_pretrained(
